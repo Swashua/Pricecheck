@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 const STEPS = [
   { id: 'init', label: 'Initializing headless browsers…' },
   { id: 'lazada', label: 'Searching Lazada Philippines…' },
-  { id: 'shopee', label: 'Searching Shopee Philippines…' },
   { id: 'parse', label: 'Parsing and sorting results…' },
 ];
 
