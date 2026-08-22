@@ -161,9 +161,8 @@ export default function Particles() {
     };
 
     const handleClick = (e) => {
-      // Don't intercept clicks on interactive elements
-      const target = e.target.tagName.toLowerCase();
-      if (['button', 'input', 'a'].includes(target)) return;
+      // Don't intercept clicks on interactive elements (or their children)
+      if (e.target.closest('a, button, input')) return;
 
       if (hoveredConstellation) {
         // Redirect to Wikipedia for that constellation
