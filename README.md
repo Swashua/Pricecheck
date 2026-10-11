@@ -1,10 +1,10 @@
-# PriceCheck PH 🇵🇭
+# PriceCheck PH
 
 > Real-time e-commerce price tracker for **Lazada Philippines** with an interactive UI, intelligent anti-bot scraping, and in-memory caching.
 
 ---
 
-## 🌟 Features
+## Features
 
 - **Live Product Scraping**: Real-time pricing, ratings, sales counts, and stock listings directly from Lazada PH.
 - **Stealth Browser Automation**: Headless Playwright integration with `puppeteer-extra-plugin-stealth` and user-agent emulation to bypass anti-bot challenges.
@@ -15,7 +15,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |---|---|
@@ -26,7 +26,7 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 pricecheck-ph/
@@ -53,7 +53,7 @@ pricecheck-ph/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -84,7 +84,7 @@ The frontend application will be accessible at `http://localhost:5173`.
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 ### `GET /search?q=<query>`
 
@@ -133,7 +133,7 @@ Liveness probe to confirm backend status.
 
 ---
 
-## ⚠️ Notes & Disclaimer
+## Notes and Disclaimer
 
 - **Anti-Bot Defenses**: Lazada actively employs bot mitigation systems. If requests are blocked or challenged, retrying after a brief cooldown is recommended.
 - **Educational / Personal Use**: This project is developed solely for educational and personal price comparison purposes. Automated scraping may be subject to platform terms of service.
