@@ -1,70 +1,139 @@
 # PriceCheck PH 🇵🇭
 
-> Side-by-side price comparison for **Lazada** and **Shopee** Philippines.
+> Real-time e-commerce price tracker for **Lazada Philippines** with an interactive UI, intelligent anti-bot scraping, and in-memory caching.
 
-## Stack
+---
 
-| | |
+## 🌟 Features
+
+- **Live Product Scraping**: Real-time pricing, ratings, sales counts, and stock listings directly from Lazada PH.
+- **Stealth Browser Automation**: Headless Playwright integration with `puppeteer-extra-plugin-stealth` and user-agent emulation to bypass anti-bot challenges.
+- **In-Memory Caching**: 5-minute TTL query cache to minimize outbound network requests, improve response latency, and reduce rate limits.
+- **Modern Responsive UI**: Built with React 19 and Vite, featuring an interactive celestial constellation canvas background and a Teal & Lemon Chiffon theme.
+- **Flexible Sorting**: Instantly sort retrieved results by Lowest Price, Highest Price, Rating, or Most Sold.
+- **Cheapest Item Highlighting**: Automatically detects and marks the lowest-priced deal for quick decision making.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technologies |
 |---|---|
-| Frontend | Vite + React |
-| Backend | Node.js + Fastify |
-| Scraping | Playwright (headless Chromium) |
-| Region | Philippines (₱ PHP) |
+| **Frontend** | React 19, Vite, Canvas API (Interactive Constellations), CSS Variables |
+| **Backend** | Node.js, Fastify, `@fastify/cors` |
+| **Scraping** | Playwright (`playwright-extra`), `puppeteer-extra-plugin-stealth`, Cheerio, Axios |
+| **Region & Currency** | Philippines · Philippine Peso (₱ PHP) |
 
-## Project Structure
+---
+
+## 📁 Project Structure
 
 ```
 pricecheck-ph/
-├── frontend/   → Vite + React app (port 5173)
-└── backend/    → Fastify API + Playwright scrapers (port 3001)
-    └── scraper/
-        ├── lazada.js   → Lazada PH scraper
-        └── shopee.js   → Shopee PH scraper
+├── backend/                  # Fastify API Server (Port 3001)
+│   ├── scraper/
+│   │   └── lazada.js         # Playwright scraper with stealth plugin
+│   ├── server.js             # API routes & in-memory cache
+│   └── package.json
+├── frontend/                 # Vite + React Client (Port 5173)
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── LoadingState.jsx    # Animated loading indicator
+│   │   │   ├── Particles.jsx       # Interactive constellation background
+│   │   │   ├── PlatformHeader.jsx  # Platform metadata banner
+│   │   │   ├── ProductCard.jsx     # Product card display
+│   │   │   └── SearchIcon.jsx      # SVG icon component
+│   │   ├── App.jsx           # Main application view & sorting logic
+│   │   ├── index.css         # Teal & Lemon Chiffon design system
+│   │   └── main.jsx
+│   ├── index.html
+│   └── package.json
+└── README.md
 ```
 
-## Getting Started
+---
 
-### 1. Start the backend
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/)
+- Playwright Chromium browser binaries:
+  ```bash
+  npx playwright install chromium
+  ```
+
+### 1. Setup & Start Backend
 
 ```bash
 cd backend
-node server.js
-# or with auto-reload:
+npm install
 npm run dev
 ```
+The backend server runs on `http://localhost:3001`.
 
-### 2. Start the frontend
+### 2. Setup & Start Frontend
 
 ```bash
 cd frontend
+npm install
 npm run dev
 ```
+The frontend application will be accessible at `http://localhost:5173`.
 
-Open **http://localhost:5173** in your browser.
+---
 
-## API
+## 🔌 API Reference
 
 ### `GET /search?q=<query>`
 
-Returns up to 12 results from each platform.
+Search Lazada for matching products.
 
-```json
-{
-  "query": "iphone 15",
-  "cached": false,
-  "results": {
-    "lazada": [ { "title": "...", "price": 49999, "priceFormatted": "₱49,999.00", ... } ],
-    "shopee": [ { "title": "...", "price": 47500, "priceFormatted": "₱47,500.00", ... } ]
+- **Query Parameters**:
+  - `q` *(string, required)*: The product keyword or title to search (e.g., `mechanical keyboard`).
+
+- **Example Request**:
+  ```http
+  GET http://localhost:3001/search?q=mechanical+keyboard
+  ```
+
+- **Example Response**:
+  ```json
+  {
+    "query": "mechanical keyboard",
+    "cached": false,
+    "results": {
+      "lazada": [
+        {
+          "title": "Redragon K552 Mechanical Gaming Keyboard RGB",
+          "price": 1850.00,
+          "priceFormatted": "₱1,850.00",
+          "rating": 4.9,
+          "sold": "1.2k sold",
+          "image": "https://...",
+          "link": "https://www.lazada.com.ph/products/..."
+        }
+      ]
+    }
   }
-}
-```
+  ```
 
 ### `GET /health`
 
-Returns `{ "status": "ok" }` — useful for checking if the backend is alive.
+Liveness probe to confirm backend status.
 
-## Notes
+- **Response**:
+  ```json
+  {
+    "status": "ok",
+    "timestamp": "2026-10-11T08:30:30.170Z"
+  }
+  ```
 
-- Both Lazada and Shopee use anti-bot measures. Results may vary.
-- Results are cached for **5 minutes** to reduce load.
-- For personal/educational use only — scraping may violate each platform's ToS.
+---
+
+## ⚠️ Notes & Disclaimer
+
+- **Anti-Bot Defenses**: Lazada actively employs bot mitigation systems. If requests are blocked or challenged, retrying after a brief cooldown is recommended.
+- **Educational / Personal Use**: This project is developed solely for educational and personal price comparison purposes. Automated scraping may be subject to platform terms of service.

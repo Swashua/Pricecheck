@@ -3,7 +3,6 @@ import SearchIcon from './components/SearchIcon';
 import ProductCard from './components/ProductCard';
 import LoadingState from './components/LoadingState';
 import PlatformHeader from './components/PlatformHeader';
-import PriceSummary from './components/PriceSummary';
 import Particles from './components/Particles';
 
 const SUGGESTIONS = ['iPhone 15', 'Gaming laptop', 'Air fryer', 'Mechanical keyboard', 'Sneakers', 'Smart watch'];

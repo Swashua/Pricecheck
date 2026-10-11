@@ -27,11 +27,6 @@
   --lazada-glow: rgba(255, 250, 205, 0.25);
   --lazada-bg: rgba(255, 250, 205, 0.08);
 
-  --shopee-primary: #FFFACD;
-  --shopee-secondary: #FDF1A9;
-  --shopee-glow: rgba(255, 250, 205, 0.25);
-  --shopee-bg: rgba(255, 250, 205, 0.08);
-
   --accent: #00897B;
   --accent-glow: rgba(0, 137, 123, 0.3);
 
@@ -44,7 +39,6 @@
   --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
   --shadow-lazada: 0 8px 32px rgba(255, 250, 205, 0.15);
-  --shadow-shopee: 0 8px 32px rgba(255, 250, 205, 0.15);
 
   --transition-fast: 0.15s ease;
   --transition-med: 0.25s ease;
@@ -161,12 +155,6 @@ body {
 }
 
 .hero h1 .brand-lazada { color: var(--lazada-primary); }
-.hero h1 .brand-vs {
-  color: var(--text-muted);
-  font-weight: 300;
-  margin: 0 12px;
-}
-.hero h1 .brand-shopee { color: var(--shopee-primary); }
 
 .hero-sub {
   font-size: 18px;
@@ -362,7 +350,7 @@ body {
 
 .loading-orb:nth-child(1) { background: var(--lazada-primary); animation-delay: 0s; }
 .loading-orb:nth-child(2) { background: var(--accent); animation-delay: 0.2s; }
-.loading-orb:nth-child(3) { background: var(--shopee-primary); animation-delay: 0.4s; }
+.loading-orb:nth-child(3) { background: var(--lazada-secondary); animation-delay: 0.4s; }
 
 @keyframes orb-bounce {
   0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
@@ -495,11 +483,6 @@ body {
   border-color: rgba(243, 111, 32, 0.2);
 }
 
-.platform-header.shopee {
-  background: var(--shopee-bg);
-  border-color: rgba(238, 77, 45, 0.2);
-}
-
 .platform-info {
   display: flex;
   align-items: center;
@@ -528,7 +511,6 @@ body {
 }
 
 .platform-logo-placeholder.lazada { background: linear-gradient(135deg, #f36f20, #ff8c42); }
-.platform-logo-placeholder.shopee { background: linear-gradient(135deg, #ee4d2d, #ff6347); }
 
 .platform-name {
   font-size: 16px;
@@ -536,7 +518,6 @@ body {
 }
 
 .platform-name.lazada { color: var(--lazada-secondary); }
-.platform-name.shopee { color: var(--shopee-secondary); }
 
 .platform-count {
   font-size: 13px;
@@ -580,11 +561,9 @@ body {
 }
 
 .product-card.lazada::before { background: linear-gradient(135deg, var(--lazada-glow) 0%, transparent 60%); }
-.product-card.shopee::before { background: linear-gradient(135deg, var(--shopee-glow) 0%, transparent 60%); }
 
 .product-card:hover { transform: translateY(-2px); border-color: var(--border-medium); }
 .product-card.lazada:hover { box-shadow: var(--shadow-lazada); border-color: rgba(243, 111, 32, 0.3); }
-.product-card.shopee:hover { box-shadow: var(--shadow-shopee); border-color: rgba(238, 77, 45, 0.3); }
 .product-card:hover::before { opacity: 1; }
 
 .product-img-wrap {
@@ -644,7 +623,6 @@ body {
 }
 
 .product-price.lazada { color: var(--lazada-primary); }
-.product-price.shopee { color: var(--shopee-primary); }
 
 .product-meta {
   display: flex;
@@ -713,77 +691,7 @@ body {
 .empty-title { font-size: 15px; font-weight: 600; color: var(--text-secondary); }
 .empty-sub { font-size: 13px; color: var(--text-muted); }
 
-/* ============================
-   Price Summary Banner
-   ============================ */
-.price-summary {
-  max-width: 1400px;
-  margin: 0 auto 28px;
-  padding: 20px 28px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
 
-.price-summary-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.price-summary-badge {
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.price-summary-badge.lazada {
-  background: var(--lazada-bg);
-  color: var(--lazada-secondary);
-  border: 1px solid rgba(243, 111, 32, 0.2);
-}
-
-.price-summary-badge.shopee {
-  background: var(--shopee-bg);
-  color: var(--shopee-secondary);
-  border: 1px solid rgba(238, 77, 45, 0.2);
-}
-
-.price-summary-data {
-  display: flex;
-  flex-direction: column;
-}
-
-.price-summary-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-.price-summary-value { font-size: 18px; font-weight: 800; }
-.price-summary-value.lazada { color: var(--lazada-primary); }
-.price-summary-value.shopee { color: var(--shopee-primary); }
-
-.price-summary-divider { width: 1px; height: 40px; background: var(--border-subtle); }
-
-.price-winner {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.price-winner-badge {
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 700;
-  background: rgba(34, 197, 94, 0.12);
-  color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.25);
-}
 
 /* ============================
    Footer
@@ -832,8 +740,6 @@ body {
   .columns-wrap { grid-template-columns: 1fr; }
   .hero { padding: 60px 16px 40px; }
   .stats-bar { gap: 16px; }
-  .price-summary { flex-direction: column; align-items: flex-start; }
-  .price-winner { margin-left: 0; }
 }
 
 @media (max-width: 600px) {
